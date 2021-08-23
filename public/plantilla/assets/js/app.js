@@ -23,9 +23,7 @@ File: Layout
      * Reset the theme
      */
     LeftSidebar.prototype._reset = function() {
-        this.body.removeAttr('data-sidebar-color');
-        this.body.removeAttr('data-sidebar-size');
-        this.body.removeAttr('data-sidebar-showuser');
+
     },
 
     /**
@@ -33,8 +31,7 @@ File: Layout
      * @param {*} color 
      */
     LeftSidebar.prototype.changeColor = function(color) {
-        this.body.attr('data-sidebar-color', color);
-        this.parent.updateConfig("sidebar", { "color": color });
+
     },
 
     /**
@@ -51,8 +48,7 @@ File: Layout
      * @param {*} showUser 
      */
     LeftSidebar.prototype.showUser = function(showUser) {
-        this.body.attr('data-sidebar-showuser', showUser);
-        this.parent.updateConfig("sidebar", { "showuser": showUser });
+
     },
 
     /**
@@ -298,8 +294,7 @@ function ($) {
      * @param {*} color 
      */
     Topbar.prototype.changeColor = function(color) {
-        this.body.attr('data-topbar-color', color);
-        this.parent.updateConfig("topbar", { "color": color });
+
     },
 
     /**

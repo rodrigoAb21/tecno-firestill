@@ -12,19 +12,60 @@
     <link href="{{asset('plantilla/assets/libs/flatpickr/flatpickr.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('plantilla/assets/libs/selectize/css/selectize.bootstrap3.css')}}" rel="stylesheet" type="text/css" />
     <!-- App css -->
-    <link href="{{asset('plantilla/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" id="bs-default-stylesheet" disabled/>
-    <link href="{{asset('plantilla/assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-default-stylesheet" disabled/>
-
     <link href="{{asset('plantilla/assets/css/bootstrap-dark.min.css')}}" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
     <link href="{{asset('plantilla/assets/css/app-dark.min.css')}}" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
+
+    <link href="{{asset('plantilla/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" id="bs-default-stylesheet"/>
+    <link href="{{asset('plantilla/assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-default-stylesheet"/>
+
 
     <!-- icons -->
     <link href="{{asset('plantilla/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
 
+
+    @if (!\Auth::guest())
+        @if(Auth::user()->edad <= 17)
+            <style>
+                a {
+                    font-family: "Comic Sans MS", fantasy !important;
+                    font-style: italic;
+                    font-size: 20px !important;
+                }
+                h1, h2, h3, h4, h5 {
+                    font-family: "Comic Sans MS", fantasy !important;
+                }
+            </style>
+        @elseif (Auth::user()->edad >= 31)
+            <style>
+                a {
+                    font-family: 'Courier New', Courier, monospace !important;
+                    font-size: 20px !important;
+                }
+                h1, h2, h3, h4, h5 {
+                    font-family: 'Courier New', Courier, monospace !important;
+                    font-weight: bold;
+                }
+            </style>
+        @endif
+    @endif
+
     @stack('arriba')
 </head>
 
-<body data-sidebar-color="brand" data-topbar-color="light">
+
+
+@if (!\Auth::guest())
+    <!-- nino -->
+    @if(Auth::user()->edad <= 17)
+        <body data-sidebar-color="gradient" data-topbar-color="light" style="font-family:'Comic Sans MS',fantasy; font-size: 20px;">
+    <!-- joven -->
+    @elseif (Auth::user()->edad <= 30)
+        <body data-sidebar-color="brand" data-topbar-color="dark">
+    <!-- adulto -->
+    @else
+        <body data-sidebar-color="light" data-topbar-color="dark" style="font-family:'Courier New', Courier, monospace; font-size: 20px;">
+    @endif
+@endif
 
 <!-- Begin page -->
 <div id="wrapper">
@@ -133,14 +174,14 @@
     <!-- end Topbar -->
 
     <!-- ========== Left Sidebar Start ========== -->
-    <div class="left-side-menu">
+    <div class="left-side-menu" >
 
         <div class="h-100" data-simplebar>
 
             <!--- Sidemenu -->
             <div id="sidebar-menu">
 
-                <ul id="side-menu">
+                <ul id="side-menu" >
 
                     @if (!\Auth::guest())
                         @if(Auth::user()->tipo == 'Administrador')
@@ -315,7 +356,23 @@
 
 <!-- Vendor js -->
 <script src="{{asset('plantilla/assets/js/vendor.min.js')}}"></script>
+<script src="{{asset('plantilla/assets/js/app.js')}}"></script>
+
 
 @stack('scripts')
+<script>
+    $(function() {
+
+        var hour = (new Date).getHours();
+
+        if (hour >= 16) {
+            $('#app-default-stylesheet').prop('disabled', true);
+            $('#bs-default-stylesheet').prop('disabled', true);
+
+            $('#app-dark-stylesheet').prop('disabled', false);
+            $('#bs-dark-stylesheet').prop('disabled', false);
+        }
+    });
+</script>
 </body>
 </html>

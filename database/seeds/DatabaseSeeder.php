@@ -13,62 +13,115 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         /*************************************************************
+         *                       config
+         ************************************************************/
+        /*
+        DB::table('config')->insert([
+            'nombre' => 'nino',
+            'sidebar' => 'Rodrigo',
+            'topbar' => 'Abasto',
+            'fontFamily' => 'carnet',
+            'fontSize' => '3532021'
+        ]);
+
+        DB::table('config')->insert([
+            'nombre' => 'joven',
+            'sidebar' => 'Rodrigo',
+            'topbar' => 'Abasto',
+            'fontFamily' => 'carnet',
+            'fontSize' => '3532021'
+        ]);
+
+        DB::table('config')->insert([
+            'nombre' => 'adulto',
+            'sidebar' => 'Rodrigo',
+            'topbar' => 'Abasto',
+            'fontFamily' => 'carnet',
+            'fontSize' => '3532021'
+        ]);
+        */
+
+
+
+        /*************************************************************
          *                       EMPLEADOS
          ************************************************************/
+        DB::table('trabajador')->insert([
+            'nombre' => 'Rodrigo',
+            'apellido' => 'Abasto',
+            'carnet' => 'carnet',
+            'edad' => 28,
+            'telefono' => '3532021',
+            'direccion' => 'direccion',
+            'tipo' => 'Administrador',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('rodrigo'),
+            //'config_id' => 2
+        ]);
 
         DB::table('trabajador')->insert([
             'nombre' => 'Juan',
             'apellido' => 'Perez',
             'carnet' => '7894562',
+            'edad' => 18,
             'telefono' =>  '79864512',
             'direccion' => 'Av. Paraguá # 82 ',
             'tipo' => 'Administrador',
             'email' => 'juanp@gmail.com',
             'password' => bcrypt('rodrigo'),
+            //'config_id' => 1
         ]);
 
         DB::table('trabajador')->insert([
             'nombre' => 'Jose',
             'apellido' => 'Menacho',
             'carnet' => '7456458',
+            'edad' => 14,
             'telefono' =>  '75698124',
             'direccion' => 'Av. Uruguay # 11',
             'tipo' => 'Administrador',
             'email' => 'josem@gmail.com',
             'password' => bcrypt('rodrigo'),
+            //'config_id' => 3
         ]);
 
         DB::table('trabajador')->insert([
             'nombre' => 'Francisco',
             'apellido' => 'Becerra',
             'carnet' => '8485265',
+            'edad' => 45,
             'telefono' =>  '76054896',
             'direccion' => 'Av. Busch #785',
             'tipo' => 'Administrador',
             'email' => 'franciscob@gmail.com',
             'password' => bcrypt('rodrigo'),
+            //'config_id' => 2
         ]);
 
         DB::table('trabajador')->insert([
             'nombre' => 'Manuel',
             'apellido' => 'Mercado',
             'carnet' => '8586954',
+            'edad' => 35,
             'telefono' =>  '75489362',
             'direccion' => 'Av. Mutualista #45',
             'tipo' => 'Administrador',
             'email' => 'manuelm@gmail.com',
             'password' => bcrypt('rodrigo'),
+            //'config_id' => 2
         ]);
 
         DB::table('trabajador')->insert([
             'nombre' => 'Marta',
             'apellido' => 'Lopez',
             'carnet' => '8798456',
+            'edad' => 9,
             'telefono' =>  '79844028',
             'direccion' => 'Av. Melchor Pinto #12',
             'tipo' => 'Administrador',
             'email' => 'martal@gmail.com',
             'password' => bcrypt('rodrigo'),
+            //'config_id' => 2
         ]);
 
 
