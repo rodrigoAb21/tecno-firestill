@@ -64,16 +64,12 @@
 
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Tipo</label>
-                                    <select required name="tipo" class="form-control">
-                                        @foreach($tipos as $tipo)
-                                            @if($tipo == $trabajador->tipo)
-                                                <option selected value="{{$tipo}}">{{$tipo}}</option>
-                                            @else
-                                                <option value="{{$tipo}}">{{$tipo}}</option>
-                                            @endif
-                                        @endforeach
-                                    </select>
+                                    <label>Edad</label>
+                                    <input max="100"
+                                           type="number"
+                                           class="form-control"
+                                           value="{{$trabajador->edad}}"
+                                           name="edad">
                                 </div>
                             </div>
 
@@ -99,7 +95,24 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Tipo</label>
+                                    <select required name="tipo" class="form-control">
+                                        @foreach($tipos as $tipo)
+                                            @if($tipo == $trabajador->tipo)
+                                                <option selected value="{{$tipo}}">{{$tipo}}</option>
+                                            @else
+                                                <option value="{{$tipo}}">{{$tipo}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>E-mail</label>
                                     <input required
@@ -109,7 +122,7 @@
                                            name="email">
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Contraseña</label>
                                     <input

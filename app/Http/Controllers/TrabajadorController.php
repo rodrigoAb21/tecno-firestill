@@ -73,6 +73,7 @@ class TrabajadorController extends Controller
             'nombre' => 'required|max:255',
             'apellido' => 'required|max:255',
             'carnet' => 'required|string|max:10',
+            'edad' => 'required',
             'telefono' => 'nullable|digits_between:7,8',
             'direccion' => 'nullable|max:255',
             'email' => 'required|max:255|email|unique:trabajador',
@@ -84,6 +85,7 @@ class TrabajadorController extends Controller
         $trabajador->nombre = $request['nombre'];
         $trabajador->apellido = $request['apellido'];
         $trabajador->carnet = $request['carnet'];
+        $trabajador->edad = $request['edad'];
         $trabajador->telefono = $request['telefono'];
         $trabajador->direccion = $request['direccion'];
         $trabajador->email = $request['email'];
@@ -152,6 +154,7 @@ class TrabajadorController extends Controller
         $this->validate($request, [
             'nombre' => 'required|max:255',
             'apellido' => 'required|max:255',
+            'edad' => 'required',
             'carnet' => 'required|string|max:10',
             'telefono' => 'nullable|digits_between:7,8',
             'direccion' => 'nullable|max:255',
@@ -164,6 +167,7 @@ class TrabajadorController extends Controller
         $trabajador->nombre = $request['nombre'];
         $trabajador->apellido = $request['apellido'];
         $trabajador->carnet = $request['carnet'];
+        $trabajador->edad = $request['edad'];
         $trabajador->telefono = $request['telefono'];
         $trabajador->direccion = $request['direccion'];
         $trabajador->email = $request['email'];
