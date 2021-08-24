@@ -9,6 +9,20 @@
      * Autor.........: Rodrigo Abasto Berbetty
      *************************************************************************
     -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="{{url('/')}}">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('clientes')}}">Clientes</a></li>
+                        <li class="breadcrumb-item active">Ver</li>
+                        <li class="breadcrumb-item active">{{$cliente->id}}</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-12">
