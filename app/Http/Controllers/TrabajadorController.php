@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Modelos\Contador;
 use App\Modelos\Trabajador;
+use App\Utils\Utils;
 use Illuminate\Http\Request;
 
 class TrabajadorController extends Controller
@@ -30,9 +32,14 @@ class TrabajadorController extends Controller
      *************************************************************************
      */
     public function index(){
+
+        $contador = Contador::findOrFail(Utils::$TRABAJADORES_INDEX);
+        $contador->increment('contador',1);
+
         return view('vistas.trabajadores.index',
             [
                 'trabajadores' => Trabajador::paginate(10),
+                'contador' => $contador,
             ]);
     }
 
@@ -50,8 +57,13 @@ class TrabajadorController extends Controller
      *************************************************************************
      */
     public function create(){
+
+        $contador = Contador::findOrFail(Utils::$TRABAJADORES_REGISTRAR);
+        $contador->increment('contador',1);
+
         return view('vistas.trabajadores.create', [
             'tipos' => Trabajador::$TIPOS_DE_USUARIO,
+            'contador' => $contador,
         ]);
     }
 
@@ -110,10 +122,14 @@ class TrabajadorController extends Controller
      */
     public function edit($id)
     {
+        $contador = Contador::findOrFail(Utils::$TRABAJADORES_EDITAR);
+        $contador->increment('contador',1);
+
         return view('vistas.trabajadores.edit',
             [
                 'trabajador' => Trabajador::findOrFail($id),
                 'tipos' => Trabajador::$TIPOS_DE_USUARIO,
+                'contador' => $contador,
             ]);
     }
 
@@ -131,9 +147,13 @@ class TrabajadorController extends Controller
      */
     public function show($id)
     {
+        $contador = Contador::findOrFail(Utils::$TRABAJADORES_VER);
+        $contador->increment('contador',1);
+
         return view('vistas.trabajadores.show',
             [
                 'trabajador' => Trabajador::findOrFail($id),
+                'contador' => $contador,
             ]);
     }
 

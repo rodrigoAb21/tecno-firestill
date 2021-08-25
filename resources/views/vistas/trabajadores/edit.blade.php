@@ -10,7 +10,16 @@
      *************************************************************************
     -->
     <div class="row">
-        <div class="col-12">
+        <div class="col-2">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item active">Visitas: {{$contador->contador}}</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="col-10">
             <div class="page-title-box">
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
@@ -83,6 +92,7 @@
                                            type="number"
                                            class="form-control"
                                            value="{{$trabajador->edad}}"
+                                           required
                                            name="edad">
                                 </div>
                             </div>
