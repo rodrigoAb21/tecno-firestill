@@ -16,7 +16,7 @@
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Inicio</a></li>
                         <li class="breadcrumb-item"><a href="{{url('trabajadores')}}">Trabajadores</a></li>
-                        <li class="breadcrumb-item active">Ver</li>
+
                         <li class="breadcrumb-item active">{{$trabajador->id}}</li>
                     </ol>
                 </div>

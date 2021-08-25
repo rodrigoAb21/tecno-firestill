@@ -3,6 +3,25 @@
 @section('contenido')
     <div class="row">
         <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="{{url('/')}}">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('imonitoreo/listaContratos')}}">Contratos</a></li>
+
+                        <li class="breadcrumb-item"><a href="{{url('imonitoreo/verContrato/'.$sucursal->contrato_id)}}">{{$sucursal->contrato_id}}</a></li>
+                        <li class="breadcrumb-item active">Sucursales</li>
+
+                        <li class="breadcrumb-item"><a href="{{url('imonitoreo/verSucursal/'.$sucursal->id)}}">{{$sucursal->id}}</a></li>
+                        <li class="breadcrumb-item active">Equipos</li>
+                        <li class="breadcrumb-item active">Ver</li>   <li class="breadcrumb-item active">{{$equipo->id}}</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <h3 class="pb-2">
