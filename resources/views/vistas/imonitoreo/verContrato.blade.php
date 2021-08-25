@@ -22,7 +22,7 @@
                                 <div class="form-group">
                                     <label>Representante Firestill</label>
                                     <input readonly
-                                           value="{{$contrato->empleado->nombre}}"
+                                           value="{{$contrato->trabajador->nombre}}"
                                            class="form-control"
                                            name="fecha_inicio">
                                 </div>

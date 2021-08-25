@@ -27,7 +27,7 @@ class NotaVenta extends Model
         'fecha',
         'tipo',
         'total',
-        'empleado_id',
+        'trabajador_id',
         'cliente_id',
     ];
 
@@ -35,8 +35,8 @@ class NotaVenta extends Model
         return $this->belongsTo('App\Modelos\Cliente', 'cliente_id', 'id')->withTrashed();
     }
 
-    public function empleado(){
-        return $this->belongsTo('App\Modelos\Empleado', 'empleado_id', 'id')->withTrashed();
+    public function trabajador(){
+        return $this->belongsTo('App\Modelos\Trabajador', 'trabajador_id', 'id')->withTrashed();
     }
 
     public function detalles(){

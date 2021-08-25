@@ -47,12 +47,12 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Representante Firestill</label>
-                                    <select required name="empleado_id" class="form-control">
-                                        @foreach($empleados as $empleado)
-                                            @if($empleado->id == $contrato->empleado_id)
-                                                <option selected value="{{$empleado->id}}">{{$empleado->nombre}}  {{$empleado->apellido}}</option>
+                                    <select required name="trabajador_id" class="form-control">
+                                        @foreach($trabajadores as $trabajador)
+                                            @if($trabajador->id == $contrato->trabajador_id)
+                                                <option selected value="{{$trabajador->id}}">{{$trabajador->nombre}}  {{$trabajador->apellido}}</option>
                                             @else
-                                                <option value="{{$empleado->id}}">{{$empleado->nombre}}  {{$empleado->apellido}}</option>
+                                                <option value="{{$trabajador->id}}">{{$trabajador->nombre}}  {{$trabajador->apellido}}</option>
                                             @endif
                                         @endforeach
                                     </select>

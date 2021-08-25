@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Modelos\Cliente;
 use App\Modelos\DetalleNotaVenta;
-use App\Modelos\Empleado;
 use App\Modelos\NotaVenta;
 use App\Modelos\Producto;
+use App\Modelos\Trabajador;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +23,7 @@ class VentaController extends Controller
     {
         return view('vistas.ventas.nuevaVenta',[
             'clientes' => Cliente::all(),
-            'empleados' => Empleado::all(),
+            'trabajadores' => Trabajador::all(),
             'productos' => Producto::where('cantidad', '>', 0)->get(),
         ]);
     }
@@ -31,7 +31,7 @@ class VentaController extends Controller
     {
         $this->validate($request, [
             'fecha' => 'required|date',
-            'empleado_id' => 'nullable|numeric|min:0',
+            'trabajador_id' => 'nullable|numeric|min:0',
             'cliente_id' => 'required|numeric|min:1',
             'total' => 'required|numeric|min:0',
             'idProductoT' => 'required|array|min:1',
@@ -47,7 +47,7 @@ class VentaController extends Controller
             $venta = new NotaVenta();
             $venta->fecha = $request['fecha'];
             $venta->total = $request['total'];
-            $venta->empleado_id = $request['empleado_id'];
+            $venta->trabajador_id = $request['trabajador_id'];
             $venta->cliente_id = $request['cliente_id'];
             $venta->save();
 

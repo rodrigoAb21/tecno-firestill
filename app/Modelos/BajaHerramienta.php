@@ -28,13 +28,13 @@ class BajaHerramienta extends Model
         'motivo',
         'cantidad',
         'herramienta_id',
-        'empleado_id',
+        'trabajador_id',
         ];
 
     public function herramienta(){
         return $this->belongsTo('App\Modelos\Herramienta', 'herramienta_id', 'id')->withTrashed();
     }
-    public function empleado(){
-        return $this->belongsTo('App\Modelos\Empleado', 'empleado_id', 'id')->withTrashed();
+    public function trabajador(){
+        return $this->belongsTo('App\Modelos\Trabajador', 'trabajador_id', 'id')->withTrashed();
     }
 }

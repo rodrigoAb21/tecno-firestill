@@ -25,11 +25,11 @@ class AsignacionHerramienta extends Model
     protected $dates = ['deleted_at'];
     protected $fillable = [
         'fecha',
-        'empleado_id',
+        'trabajador_id',
     ];
 
     public function empleado(){
-        return $this->belongsTo('App\Modelos\Empleado', 'empleado_id', 'id')->withTrashed();
+        return $this->belongsTo('App\Modelos\Trabajador', 'trabajador_id', 'id')->withTrashed();
     }
     public function detalles(){
         return $this->hasMany(DetalleAsignacion::class);

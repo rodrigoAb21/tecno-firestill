@@ -54,10 +54,10 @@
 
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Empleado</label>
-                                    <select required name="empleado_id" class="form-control">
-                                        @foreach($empleados as $empleado)
-                                            <option value="{{$empleado->id}}">{{$empleado->nombre}} {{$empleado->apellido}}</option>
+                                    <label>Trabajador</label>
+                                    <select required name="trabajador_id" class="form-control">
+                                        @foreach($trabajadores as $trabajador)
+                                            <option value="{{$trabajador->id}}">{{$trabajador->nombre}} {{$trabajador->apellido}}</option>
                                         @endforeach
                                     </select>
                                 </div>

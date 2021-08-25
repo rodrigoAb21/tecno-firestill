@@ -27,7 +27,7 @@
                                 <th class="text-center">COD</th>
                                 <th class="text-center">FECHA</th>
                                 <th class="text-center">CLIENTE</th>
-                                <th class="text-center">EMPLEADO</th>
+                                <th class="text-center">TRABAJADOR</th>
                                 <th class="text-center">TOTAL BS</th>
                                 <th class="text-center">OPC</th>
                             </tr>
@@ -38,7 +38,7 @@
                                     <td>{{$venta->id}}</td>
                                     <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $venta->fecha)->format('d-m-Y')}}</td>
                                     <td>{{$venta->cliente->nombre_empresa}}</td>
-                                    <td>{{$venta->empleado->nombre}} {{$venta->empleado->apellido}}</td>
+                                    <td>{{$venta->trabajador->nombre}} {{$venta->trabajador->apellido}}</td>
                                     <td>{{$venta->total}}</td>
                                     <td>
                                         <a href="{{url('ventas/verServicio/'.$venta->id)}}">

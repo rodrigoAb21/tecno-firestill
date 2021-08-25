@@ -41,7 +41,7 @@ class FichaTecnica extends Model
         'carga',
         'observacion',
         'resultado',
-        'empleado_id',
+        'trabajador_id',
         'equipo_id',
     ];
 
@@ -49,7 +49,7 @@ class FichaTecnica extends Model
         return $this->belongsTo('App\Modelos\Equipo', 'equipo_id', 'id')->withTrashed();
     }
 
-    public function empleado(){
-        return $this->belongsTo('App\Modelos\Empleado', 'empleado_id', 'id')->withTrashed();
+    public function trabajador(){
+        return $this->belongsTo('App\Modelos\Trabajador', 'trabajador_id', 'id')->withTrashed();
     }
 }

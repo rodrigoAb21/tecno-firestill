@@ -27,7 +27,7 @@
                                 <input readonly
                                        type="text"
                                        class="form-control"
-                                       value="{{$ficha->empleado->nombre}} {{$ficha->empleado->apellido}}"
+                                       value="{{$ficha->trabajador->nombre}} {{$ficha->trabajador->apellido}}"
                                 >
                             </div>
                         </div>

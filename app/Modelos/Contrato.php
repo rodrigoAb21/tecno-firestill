@@ -30,15 +30,15 @@ class Contrato extends Model
         'edicion',
         'estado',
         'cliente_id',
-        'empleado_id',
+        'trabajador_id',
         ];
 
     public function cliente(){
         return $this->belongsTo('App\Modelos\Cliente', 'cliente_id', 'id')->withTrashed();
     }
 
-    public function empleado(){
-        return $this->belongsTo('App\Modelos\Empleado', 'empleado_id', 'id')->withTrashed();
+    public function trabajador(){
+        return $this->belongsTo('App\Modelos\Trabajador', 'trabajador_id', 'id')->withTrashed();
     }
 
     public function sucursales(){
