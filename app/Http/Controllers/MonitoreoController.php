@@ -191,7 +191,7 @@ class MonitoreoController extends Controller
 
     public function nuevoEquipo($sucursal_id){
         return view('vistas.imonitoreo.nuevoEquipo',[
-            'sucursal_id' => $sucursal_id,
+            'sucursal' => Sucursal::findOrFail($sucursal_id),
             'marcas' => MarcaClasificacion::all(),
             'tipos' => TipoClasificacion::all(),
             'unidades' => Equipo::$UNIDAD_MEDIDA,
@@ -231,16 +231,20 @@ class MonitoreoController extends Controller
         return redirect('imonitoreo/editarSucursal/'.$request['sucursal_id']);
     }
     public function verEquipo($id){
+        $equipo = Equipo::findOrFail($id);
         return view('vistas.imonitoreo.verEquipo',[
-            'equipo' => Equipo::findOrFail($id),
+            'equipo' => $equipo,
+            'sucursal' => Sucursal::findOrFail($equipo->sucursal_id),
             'marcas' => MarcaClasificacion::all(),
             'tipos' => TipoClasificacion::all(),
             'unidades' => Equipo::$UNIDAD_MEDIDA,
         ]);
     }
     public function editarEquipo($id){
+        $equipo = Equipo::findOrFail($id);
         return view('vistas.imonitoreo.editarEquipo',[
-            'equipo' => Equipo::findOrFail($id),
+            'equipo' => $equipo,
+            'sucursal' => Sucursal::findOrFail($equipo->sucursal_id),
             'marcas' => MarcaClasificacion::all(),
             'tipos' => TipoClasificacion::all(),
             'unidades' => Equipo::$UNIDAD_MEDIDA,
@@ -289,9 +293,11 @@ class MonitoreoController extends Controller
     //-----------------------------------------------------------------------
 
     public function listarFichas($id){
+        $equipo = Equipo::findOrFail($id);
         return view('vistas.imonitoreo.listarFichas',
         [
-            'equipo' => Equipo::findOrFail($id),
+            'equipo' => $equipo,
+            'sucursal' => Sucursal::findOrFail($equipo->sucursal_id),
             'fichas' => FichaTecnica::where('equipo_id', '=', $id)->orderByDesc('id')->get(),
         ]);
     }

@@ -8,7 +8,7 @@
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Inicio</a></li>
                         <li class="breadcrumb-item"><a href="{{url('proveedores')}}">Proveedores</a></li>
-                        <li class="breadcrumb-item active">Ver</li>
+
                         <li class="breadcrumb-item active">{{$proveedor->id}}</li>
                     </ol>
                 </div>
