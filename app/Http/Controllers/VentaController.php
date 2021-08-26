@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Modelos\Cliente;
+use App\Modelos\Contador;
 use App\Modelos\DetalleNotaVenta;
 use App\Modelos\NotaVenta;
 use App\Modelos\Producto;
 use App\Modelos\Trabajador;
+use App\Utils\Utils;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,16 +17,26 @@ class VentaController extends Controller
 {
     public function ventas()
     {
+        $contador = Contador::findOrFail(Utils::$VENTAS_INDEX);
+        $contador->increment('contador',1);
+
+
         return view('vistas.ventas.ventas', [
-            'ventas' => NotaVenta::where('tipo', '=', true)->orderByDesc('id')->paginate(5)
+            'ventas' => NotaVenta::where('tipo', '=', true)->orderByDesc('id')->paginate(5),
+            'contador' => $contador,
         ]);
     }
     public function nuevaVenta()
     {
+        $contador = Contador::findOrFail(Utils::$VENTAS_REGISTRAR);
+        $contador->increment('contador',1);
+
+
         return view('vistas.ventas.nuevaVenta',[
             'clientes' => Cliente::all(),
             'trabajadores' => Trabajador::all(),
             'productos' => Producto::where('cantidad', '>', 0)->get(),
+            'contador' => $contador,
         ]);
     }
     public function guardarVenta(Request $request)
@@ -88,8 +100,13 @@ class VentaController extends Controller
     }
     public function verVenta($id)
     {
+        $contador = Contador::findOrFail(Utils::$VENTAS_VER);
+        $contador->increment('contador',1);
+
+
         return view('vistas.ventas.verVenta', [
             'venta' => NotaVenta::findOrFail($id),
+            'contador' => $contador,
         ]);
     }
     public function eliminarVenta($id)
