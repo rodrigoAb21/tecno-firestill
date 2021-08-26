@@ -263,7 +263,7 @@ class BusquedaController extends Controller
             ->orWhere('nombre', 'like', '%' . $palabra . '%')
             ->orWhere('nit', $palabra)
             ->orWhere('email', 'like', '%' . $palabra . '%')
-            ->orWhere('direccion', 'like', '%' . $palabra . '%')
+            //->orWhere('direccion', 'like', '%' . $palabra . '%')
             ->orWhere('telefono', $palabra)
             ->orWhere('informacion', 'like', '%' . $palabra . '%')
             ->orWhere('titular', 'like', '%' . $palabra . '%')
