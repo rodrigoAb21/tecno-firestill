@@ -36,33 +36,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('marcas', 'MarcaClasificacionController');
     Route::resource('notificaciones', 'NotificacionController');
 
-    // ------------------------------ INGRESO H -------------------------------------------
-
-    Route::get('herramientas/listaIngresos', 'HerramientaController@listaIngresos');
-    Route::get('herramientas/nuevoIngreso', 'HerramientaController@nuevoIngreso');
-    Route::post('herramientas/guardarIngreso', 'HerramientaController@guardarIngreso');
-    Route::get('herramientas/verIngreso/{id}', 'HerramientaController@verIngreso');
-    Route::delete('herramientas/eliminarIngreso/{id}', 'HerramientaController@eliminarIngreso');
-
-
-    // --------------------------------- BAJAS H -------------------------------------------
-    Route::get('herramientas/listaBajas', 'HerramientaController@listaBajas');
-    Route::get('herramientas/darBaja/{id}', 'HerramientaController@nuevaBaja');
-    Route::post('herramientas/darBaja', 'HerramientaController@darBaja');
-    Route::delete('herramientas/anularBaja/{id}', 'HerramientaController@anularBaja');
-
-    // ------------------------------ ASIGNACIONES -------------------------------------------
-    Route::get('herramientas/listaAsignaciones', 'HerramientaController@listaAsignaciones');
-    Route::get('herramientas/nuevaAsignacion', 'HerramientaController@nuevaAsignacion');
-    Route::post('herramientas/guardarAsignacion', 'HerramientaController@guardarAsignacion');
-    Route::get('herramientas/reingreso/{id}', 'HerramientaController@reingreso');
-    Route::post('herramientas/guardarReingreso/{id}', 'HerramientaController@guardarReingreso');
-    Route::get('herramientas/verAsignacion/{id}', 'HerramientaController@verAsignacion');
-    Route::delete('herramientas/eliminarAsignacion/{id}', 'HerramientaController@eliminarAsignacion');
-
-    Route::get('herramientas/reporte', 'HerramientaController@reporte');
-
-    Route::resource('herramientas', 'HerramientaController');
 
     // ------------------------------ CONTRATO -------------------------------------------
 
@@ -109,22 +82,22 @@ Route::middleware('auth')->group(function () {
 
 
     // ------------------------------- INGRESO P ------------------------------------------
-    Route::get('inventario/listaIngresos', 'InventarioController@listaIngresos');
-    Route::get('inventario/nuevoIngreso', 'InventarioController@nuevoIngreso');
-    Route::post('inventario/guardarIngreso', 'InventarioController@guardarIngreso');
-    Route::get('inventario/verIngreso/{id}', 'InventarioController@verIngreso');
-    Route::delete('inventario/eliminarIngreso/{id}', 'InventarioController@eliminarIngreso');
+    Route::get('inventario/listaIngresos', 'IngresoProductoController@listaIngresos');
+    Route::get('inventario/nuevoIngreso', 'IngresoProductoController@nuevoIngreso');
+    Route::post('inventario/guardarIngreso', 'IngresoProductoController@guardarIngreso');
+    Route::get('inventario/verIngreso/{id}', 'IngresoProductoController@verIngreso');
+    Route::delete('inventario/eliminarIngreso/{id}', 'IngresoProductoController@eliminarIngreso');
 
 
     // --------------------------------- BAJAS P -------------------------------------------
-    Route::get('inventario/listaBajas', 'InventarioController@listaBajas');
-    Route::get('inventario/darBaja/{id}', 'InventarioController@nuevaBaja');
-    Route::post('inventario/darBaja', 'InventarioController@darBaja');
-    Route::delete('inventario/anularBaja/{id}', 'InventarioController@anularBaja');
-
-    Route::get('inventario/reporte', 'InventarioController@reporte');
-    Route::resource('inventario', 'InventarioController');
-
+    Route::get('inventario/listaBajas', 'BajaProductoController@listaBajas');
+    Route::get('inventario/darBaja/{id}', 'BajaProductoController@nuevaBaja');
+    Route::post('inventario/darBaja', 'BajaProductoController@darBaja');
+    Route::delete('inventario/anularBaja/{id}', 'BajaProductoController@anularBaja');
+/******************/
+    Route::get('inventario/reporte', 'ProductoController@reporte');
+    Route::resource('inventario', 'ProductoController');
+/*****************/
 
     // ------------------------------------- VENTAS ------------------------------------
     Route::get('ventas/ventas', 'VentaController@ventas');
@@ -140,6 +113,13 @@ Route::middleware('auth')->group(function () {
     Route::post('ventas/guardarServicio', 'ServicioController@guardarServicio');
     Route::get('ventas/verServicio/{id}', 'ServicioController@verServicio');
     Route::delete('ventas/eliminarServicio/{id}', 'ServicioController@eliminarServicio');
+
+
+    //-------------------------------------- BUSQUEDA ---------------------------------------
+    Route::post('busqueda','BusquedaController@buscar');
+
+
+
     Route::get( '(.*)', function(){
         return redirect('/');
     });
