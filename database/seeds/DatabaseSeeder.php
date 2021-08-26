@@ -643,15 +643,9 @@ class DatabaseSeeder extends Seeder
 
 
 
-
         DB::table('contador')->insert([
             'caso_uso' => 'sucursales',
-            'accion' => 'index',
-            'contador' => 0
-        ]);
-        DB::table('contador')->insert([
-            'caso_uso' => 'sucursales',
-            'accion' => 'registrar',
+            'accion' => 'editar',
             'contador' => 0
         ]);
         DB::table('contador')->insert([
@@ -662,15 +656,14 @@ class DatabaseSeeder extends Seeder
 
 
 
-
         DB::table('contador')->insert([
             'caso_uso' => 'equipos',
-            'accion' => 'index',
+            'accion' => 'registrar',
             'contador' => 0
         ]);
         DB::table('contador')->insert([
             'caso_uso' => 'equipos',
-            'accion' => 'registrar',
+            'accion' => 'editar',
             'contador' => 0
         ]);
         DB::table('contador')->insert([

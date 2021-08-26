@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Modelos\Categoria;
+use App\Modelos\Contador;
+use App\Utils\Utils;
 use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
@@ -31,9 +33,13 @@ class CategoriaController extends Controller
      *************************************************************************
      */
     public function index(){
+        $contador = Contador::findOrFail(Utils::$CATEGORIAS_INDEX);
+        $contador->increment('contador',1);
+
         return view('vistas.categorias.index',
             [
                 'categorias' => Categoria::paginate(5),
+                'contador' => $contador,
             ]);
     }
 
@@ -51,7 +57,12 @@ class CategoriaController extends Controller
      *************************************************************************
      */
     public function create(){
-        return view('vistas.categorias.create');
+        $contador = Contador::findOrFail(Utils::$CATEGORIAS_REGISTRAR);
+        $contador->increment('contador',1);
+
+        return view('vistas.categorias.create', [
+            'contador' => $contador,
+        ]);
     }
 
 
@@ -96,9 +107,13 @@ class CategoriaController extends Controller
      */
     public function edit($id)
     {
+        $contador = Contador::findOrFail(Utils::$CATEGORIAS_EDITAR);
+        $contador->increment('contador',1);
+
         return view('vistas.categorias.edit',
             [
                 'categoria' => Categoria::findOrFail($id),
+                'contador' => $contador,
             ]);
     }
 

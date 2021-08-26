@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Modelos\Cliente;
+use App\Modelos\Contador;
 use App\Modelos\Contrato;
 use App\Modelos\Trabajador;
 use App\Modelos\Equipo;
@@ -10,6 +11,7 @@ use App\Modelos\FichaTecnica;
 use App\Modelos\MarcaClasificacion;
 use App\Modelos\Sucursal;
 use App\Modelos\TipoClasificacion;
+use App\Utils\Utils;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use LaravelQRCode\Facades\QRCode;
@@ -22,8 +24,13 @@ class MonitoreoController extends Controller
 
     public function listaContratos(){
         $this->actualizarEstados();
+
+        $contador = Contador::findOrFail(Utils::$CONTRATOS_INDEX);
+        $contador->increment('contador',1);
+
         return view('vistas.imonitoreo.listaContratos', [
             'contratos' => Contrato::paginate(5),
+            'contador' => $contador,
         ]);
     }
 
@@ -40,9 +47,14 @@ class MonitoreoController extends Controller
     }
 
     public function nuevoContrato(){
+
+        $contador = Contador::findOrFail(Utils::$CONTRATOS_REGISTRAR);
+        $contador->increment('contador',1);
+
         return view('vistas.imonitoreo.nuevoContrato',[
             'clientes' => Cliente::all(),
             'trabajadores' => Trabajador::all(),
+            'contador' => $contador,
         ]);
     }
 
@@ -77,18 +89,28 @@ class MonitoreoController extends Controller
     }
 
     public function verContrato($id){
+
+        $contador = Contador::findOrFail(Utils::$CONTRATOS_VER);
+        $contador->increment('contador',1);
+
         return view('vistas.imonitoreo.verContrato',[
             'contrato' => Contrato::findOrFail($id),
             'clientes' => Cliente::all(),
             'trabajadores' => Trabajador::all(),
+            'contador' => $contador,
         ]);
     }
 
     public function editarContrato($id){
+
+        $contador = Contador::findOrFail(Utils::$CONTRATOS_EDITAR);
+        $contador->increment('contador',1);
+
         return view('vistas.imonitoreo.editarContrato',[
             'contrato' => Contrato::findOrFail($id),
             'clientes' => Cliente::all(),
             'trabajadores' => Trabajador::all(),
+            'contador' => $contador,
         ]);
     }
 
@@ -154,14 +176,24 @@ class MonitoreoController extends Controller
     }
 
     public function verSucursal($id){
+
+        $contador = Contador::findOrFail(Utils::$SUCURSALES_VER);
+        $contador->increment('contador',1);
+
         return view('vistas.imonitoreo.verSucursal',[
             'sucursal' => Sucursal::findOrFail($id),
+            'contador' => $contador,
         ]);
     }
 
     public function editarSucursal($id){
+
+        $contador = Contador::findOrFail(Utils::$SUCURSALES_EDITAR);
+        $contador->increment('contador',1);
+
         return view('vistas.imonitoreo.editarSucursal',[
             'sucursal' => Sucursal::findOrFail($id),
+            'contador' => $contador,
         ]);
     }
 
@@ -190,11 +222,16 @@ class MonitoreoController extends Controller
     //-----------------------------------------------------------------------
 
     public function nuevoEquipo($sucursal_id){
+
+        $contador = Contador::findOrFail(Utils::$EQUIPOS_REGISTRAR);
+        $contador->increment('contador',1);
+
         return view('vistas.imonitoreo.nuevoEquipo',[
             'sucursal' => Sucursal::findOrFail($sucursal_id),
             'marcas' => MarcaClasificacion::all(),
             'tipos' => TipoClasificacion::all(),
             'unidades' => Equipo::$UNIDAD_MEDIDA,
+            'contador' => $contador,
         ]);
     }
     public function guardarEquipo(Request $request){
@@ -232,22 +269,32 @@ class MonitoreoController extends Controller
     }
     public function verEquipo($id){
         $equipo = Equipo::findOrFail($id);
+
+        $contador = Contador::findOrFail(Utils::$EQUIPOS_VER);
+        $contador->increment('contador',1);
+
         return view('vistas.imonitoreo.verEquipo',[
             'equipo' => $equipo,
             'sucursal' => Sucursal::findOrFail($equipo->sucursal_id),
             'marcas' => MarcaClasificacion::all(),
             'tipos' => TipoClasificacion::all(),
             'unidades' => Equipo::$UNIDAD_MEDIDA,
+            'contador' => $contador,
         ]);
     }
     public function editarEquipo($id){
         $equipo = Equipo::findOrFail($id);
+
+        $contador = Contador::findOrFail(Utils::$EQUIPOS_EDITAR);
+        $contador->increment('contador',1);
+
         return view('vistas.imonitoreo.editarEquipo',[
             'equipo' => $equipo,
             'sucursal' => Sucursal::findOrFail($equipo->sucursal_id),
             'marcas' => MarcaClasificacion::all(),
             'tipos' => TipoClasificacion::all(),
             'unidades' => Equipo::$UNIDAD_MEDIDA,
+            'contador' => $contador,
         ]);
     }
     public function actualizarEquipo(Request $request, $id){
@@ -289,21 +336,31 @@ class MonitoreoController extends Controller
 
 
     //-----------------------------------------------------------------------
-    //-----------------------------FICHAS TECNICAS------------------------------------
+    //-----------------------------FICHAS TECNICAS---------------------------
     //-----------------------------------------------------------------------
 
     public function listarFichas($id){
         $equipo = Equipo::findOrFail($id);
+
+        $contador = Contador::findOrFail(Utils::$FICHAS_INDEX);
+        $contador->increment('contador',1);
+
         return view('vistas.imonitoreo.listarFichas',
         [
             'equipo' => $equipo,
             'sucursal' => Sucursal::findOrFail($equipo->sucursal_id),
             'fichas' => FichaTecnica::where('equipo_id', '=', $id)->orderByDesc('id')->get(),
+            'contador' => $contador,
         ]);
     }
     public function verFicha($id){
+
+        $contador = Contador::findOrFail(Utils::$FICHAS_VER);
+        $contador->increment('contador',1);
+
         return view('vistas.imonitoreo.verFicha', [
             'ficha' => FichaTecnica::findOrFail($id),
+            'contador' => $contador,
         ]);
     }
 }

@@ -58,17 +58,16 @@ class Utils
     public static $CONTRATOS_EDITAR = 39;
     public static $CONTRATOS_VER = 40;
 
-    public static $SUCURSALES_INDEX = 41;
-    public static $SUCURSALES_REGISTRAR = 42;
-    public static $SUCURSALES_VER = 43;
+    public static $SUCURSALES_EDITAR = 41;
+    public static $SUCURSALES_VER = 42;
 
-    public static $EQUIPOS_INDEX = 44;
-    public static $EQUIPOS_REGISTRAR = 45;
-    public static $EQUIPOS_VER = 46;
+    public static $EQUIPOS_REGISTRAR = 43;
+    public static $EQUIPOS_EDITAR = 44;
+    public static $EQUIPOS_VER = 45;
 
-    public static $FICHAS_INDEX = 47;
-    public static $FICHAS_REGISTRAR = 48;
-    public static $FICHAS_EDITAR = 49;
-    public static $FICHAS_VER = 50;
+    public static $FICHAS_INDEX = 46;
+    public static $FICHAS_REGISTRAR = 47;
+    public static $FICHAS_EDITAR = 48;
+    public static $FICHAS_VER = 49;
 
 }
