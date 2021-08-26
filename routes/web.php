@@ -109,6 +109,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('ventas/eliminarServicio/{id}', 'ServicioController@eliminarServicio');
 
 
+    
     //-------------------------------------- BUSQUEDA ---------------------------------------
     Route::post('busqueda','BusquedaController@buscar');
 
