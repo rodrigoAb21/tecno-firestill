@@ -234,10 +234,7 @@ class MonitoreoController extends Controller
         $equipo = Equipo::findOrFail($id);
         return view('vistas.imonitoreo.verEquipo',[
             'equipo' => $equipo,
-            'sucursal' => Sucursal::findOrFail($equipo->sucursal_id),
-            'marcas' => MarcaClasificacion::all(),
-            'tipos' => TipoClasificacion::all(),
-            'unidades' => Equipo::$UNIDAD_MEDIDA,
+            'sucursal' => Sucursal::findOrFail($equipo->sucursal_id)
         ]);
     }
     public function editarEquipo($id){

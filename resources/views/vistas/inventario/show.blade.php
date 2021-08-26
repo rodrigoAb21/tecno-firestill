@@ -1,6 +1,7 @@
 @extends('layouts.index')
 
 @section('contenido')
+
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">

@@ -76,10 +76,11 @@
             <ul class="list-unstyled topnav-menu float-right mb-0">
 
                 <li class="d-none d-lg-block">
-                    <form class="app-search">
+                    <form method="POST" action="{{url('busqueda')}}" class="app-search">
+                        {{csrf_field()}}
                         <div class="app-search-box dropdown">
                             <div class="input-group">
-                                <input type="search" class="form-control" placeholder="Search..." id="top-search">
+                                <input type="search" class="form-control" placeholder="Search..." id="top-search" name="textoBusqueda">
                                 <div class="input-group-append">
                                     <button class="btn" type="submit">
                                         <i class="fe-search"></i>
