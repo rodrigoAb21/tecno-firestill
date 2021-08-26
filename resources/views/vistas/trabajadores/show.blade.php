@@ -10,13 +10,21 @@
      *************************************************************************
     -->
     <div class="row">
-        <div class="col-12">
+        <div class="col-2">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item active">Visitas: {{$contador->contador}}</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="col-10">
             <div class="page-title-box">
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Inicio</a></li>
                         <li class="breadcrumb-item"><a href="{{url('trabajadores')}}">Trabajadores</a></li>
-
                         <li class="breadcrumb-item active">{{$trabajador->id}}</li>
                     </ol>
                 </div>
@@ -29,7 +37,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="pb-2">
-                        Editar trabajador
+                        Ver trabajador
                     </h3>
                         {{csrf_field()}}
                         {{method_field('PATCH')}}
@@ -64,7 +72,17 @@
                                             name="direccion">
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Edad</label>
+                                    <input  readonly
+                                           type="text"
+                                           class="form-control"
+                                           value="{{$trabajador->edad}}"
+                                           name="carnet">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Carnet</label>
                                     <input  readonly
@@ -74,7 +92,7 @@
                                            name="carnet">
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Telefono</label>
                                     <input readonly
@@ -85,7 +103,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>E-mail</label>
                                     <input readonly

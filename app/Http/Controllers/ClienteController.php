@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Modelos\Cliente;
+use App\Modelos\Contador;
+use App\Utils\Utils;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -31,9 +33,15 @@ class ClienteController extends Controller
      *************************************************************************
      */
     public function index(){
+
+        $contador = Contador::findOrFail(Utils::$CLIENTES_INDEX);
+        $contador->increment('contador',1);
+
+
         return view('vistas.clientes.index',
             [
                 'clientes' => Cliente::paginate(5),
+                'contador' => $contador,
             ]);
     }
 
@@ -52,7 +60,14 @@ class ClienteController extends Controller
      *************************************************************************
      */
     public function create(){
-        return view('vistas.clientes.create');
+
+        $contador = Contador::findOrFail(Utils::$CLIENTES_REGISTRAR);
+        $contador->increment('contador',1);
+
+
+        return view('vistas.clientes.create', [
+            'contador' => $contador,
+        ]);
     }
 
 
@@ -112,8 +127,15 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
+
+        $contador = Contador::findOrFail(Utils::$CLIENTES_EDITAR);
+        $contador->increment('contador',1);
+
+
         return view('vistas.clientes.edit', [
             'cliente' => Cliente::findOrFail($id),
+            'contador' => $contador,
+
         ]);
     }
 
@@ -131,9 +153,15 @@ class ClienteController extends Controller
      */
     public function show($id)
     {
+
+        $contador = Contador::findOrFail(Utils::$CLIENTES_VER);
+        $contador->increment('contador',1);
+
+
         return view('vistas.clientes.show',
             [
                 'cliente' => Cliente::findOrFail($id),
+                'contador' => $contador,
             ]);
     }
 

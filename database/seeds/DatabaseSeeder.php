@@ -397,5 +397,304 @@ class DatabaseSeeder extends Seeder
             'cantidad' => '0',
             'categoria_id' => 3,
         ]);
+
+
+        /*************************************************************
+         *                        CONTADOR
+         ************************************************************/
+
+
+        DB::table('contador')->insert([
+            'caso_uso' => 'trabajadores',
+            'accion' => 'index',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'trabajadores',
+            'accion' => 'registrar',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'trabajadores',
+            'accion' => 'editar',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'trabajadores',
+            'accion' => 'ver',
+            'contador' => 0
+        ]);
+
+
+
+        DB::table('contador')->insert([
+            'caso_uso' => 'proveedores',
+            'accion' => 'index',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'proveedores',
+            'accion' => 'registrar',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'proveedores',
+            'accion' => 'editar',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'proveedores',
+            'accion' => 'ver',
+            'contador' => 0
+        ]);
+
+
+
+        DB::table('contador')->insert([
+            'caso_uso' => 'clientes',
+            'accion' => 'index',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'clientes',
+            'accion' => 'registrar',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'clientes',
+            'accion' => 'editar',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'clientes',
+            'accion' => 'ver',
+            'contador' => 0
+        ]);
+
+
+
+        DB::table('contador')->insert([
+            'caso_uso' => 'categorias',
+            'accion' => 'index',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'categorias',
+            'accion' => 'registrar',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'categorias',
+            'accion' => 'editar',
+            'contador' => 0
+        ]);
+
+
+
+        DB::table('contador')->insert([
+            'caso_uso' => 'tipos',
+            'accion' => 'index',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'tipos',
+            'accion' => 'registrar',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'tipos',
+            'accion' => 'editar',
+            'contador' => 0
+        ]);
+
+
+
+        DB::table('contador')->insert([
+            'caso_uso' => 'marcas',
+            'accion' => 'index',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'marcas',
+            'accion' => 'registrar',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'marcas',
+            'accion' => 'editar',
+            'contador' => 0
+        ]);
+
+
+
+
+        DB::table('contador')->insert([
+            'caso_uso' => 'productos',
+            'accion' => 'index',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'productos',
+            'accion' => 'registrar',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'productos',
+            'accion' => 'editar',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'productos',
+            'accion' => 'ver',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'productos',
+            'accion' => 'baja',
+            'contador' => 0
+        ]);
+
+
+
+        DB::table('contador')->insert([
+            'caso_uso' => 'ingresos',
+            'accion' => 'index',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'ingresos',
+            'accion' => 'registrar',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'ingresos',
+            'accion' => 'ver',
+            'contador' => 0
+        ]);
+
+
+
+        DB::table('contador')->insert([
+            'caso_uso' => 'bajas',
+            'accion' => 'index',
+            'contador' => 0
+        ]);
+
+
+
+        DB::table('contador')->insert([
+            'caso_uso' => 'ventas',
+            'accion' => 'index',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'ventas',
+            'accion' => 'registrar',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'ventas',
+            'accion' => 'ver',
+            'contador' => 0
+        ]);
+
+
+
+
+        DB::table('contador')->insert([
+            'caso_uso' => 'servicios',
+            'accion' => 'index',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'servicios',
+            'accion' => 'registrar',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'servicios',
+            'accion' => 'ver',
+            'contador' => 0
+        ]);
+
+
+
+
+        DB::table('contador')->insert([
+            'caso_uso' => 'contratos',
+            'accion' => 'index',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'contratos',
+            'accion' => 'registrar',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'contratos',
+            'accion' => 'editar',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'contratos',
+            'accion' => 'ver',
+            'contador' => 0
+        ]);
+
+
+
+        DB::table('contador')->insert([
+            'caso_uso' => 'sucursales',
+            'accion' => 'editar',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'sucursales',
+            'accion' => 'ver',
+            'contador' => 0
+        ]);
+
+
+
+        DB::table('contador')->insert([
+            'caso_uso' => 'equipos',
+            'accion' => 'registrar',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'equipos',
+            'accion' => 'editar',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'equipos',
+            'accion' => 'ver',
+            'contador' => 0
+        ]);
+
+
+
+
+        DB::table('contador')->insert([
+            'caso_uso' => 'fichas',
+            'accion' => 'index',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'fichas',
+            'accion' => 'registrar',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'fichas',
+            'accion' => 'editar',
+            'contador' => 0
+        ]);
+        DB::table('contador')->insert([
+            'caso_uso' => 'fichas',
+            'accion' => 'ver',
+            'contador' => 0
+        ]);
+
     }
 }

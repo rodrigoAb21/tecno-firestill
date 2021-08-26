@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Modelos\Contador;
 use App\Modelos\MarcaClasificacion;
+use App\Utils\Utils;
 use Illuminate\Http\Request;
 
 class MarcaClasificacionController extends Controller
@@ -31,9 +33,14 @@ class MarcaClasificacionController extends Controller
      *************************************************************************
      */
     public function index(){
+
+        $contador = Contador::findOrFail(Utils::$MARCAS_INDEX);
+        $contador->increment('contador',1);
+
         return view('vistas.marcas.index',
             [
                 'marcas' => MarcaClasificacion::paginate(5),
+                'contador' => $contador,
             ]);
     }
 
@@ -51,7 +58,13 @@ class MarcaClasificacionController extends Controller
      *************************************************************************
      */
     public function create(){
-        return view('vistas.marcas.create');
+
+        $contador = Contador::findOrFail(Utils::$MARCAS_REGISTRAR);
+        $contador->increment('contador',1);
+
+        return view('vistas.marcas.create', [
+            'contador' => $contador,
+        ]);
     }
 
 
@@ -95,9 +108,14 @@ class MarcaClasificacionController extends Controller
      */
     public function edit($id)
     {
+
+        $contador = Contador::findOrFail(Utils::$MARCAS_EDITAR);
+        $contador->increment('contador',1);
+
         return view('vistas.marcas.edit',
             [
                 'marca' => MarcaClasificacion::findOrFail($id),
+                'contador' => $contador,
             ]);
     }
 

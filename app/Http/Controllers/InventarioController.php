@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Modelos\BajaProducto;
 use App\Modelos\Categoria;
+use App\Modelos\Contador;
 use App\Modelos\DetalleIngresoProducto;
 use App\Modelos\IngresoProducto;
 use App\Modelos\Producto;
 use App\Modelos\Proveedor;
+use App\Utils\Utils;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -40,9 +42,15 @@ class InventarioController extends Controller
      *************************************************************************
      */
     public function index(){
+
+        $contador = Contador::findOrFail(Utils::$PRODUCTOS_INDEX);
+        $contador->increment('contador',1);
+
+
         return view('vistas.inventario.index',
             [
                 'productos' => Producto::paginate(5),
+                'contador' => $contador,
             ]);
     }
 
@@ -60,9 +68,15 @@ class InventarioController extends Controller
      *************************************************************************
      */
     public function create(){
+
+        $contador = Contador::findOrFail(Utils::$PRODUCTOS_REGISTRAR);
+        $contador->increment('contador',1);
+
+
         return view('vistas.inventario.create',
             [
                 'categorias' => Categoria::all(),
+                'contador' => $contador,
             ]);
     }
 
@@ -125,10 +139,14 @@ class InventarioController extends Controller
      */
     public function edit($id)
     {
+        $contador = Contador::findOrFail(Utils::$PRODUCTOS_EDITAR);
+        $contador->increment('contador',1);
+
         return view('vistas.inventario.edit',
             [
                 'producto' => Producto::findOrFail($id),
                 'categorias' => Categoria::all(),
+                'contador' => $contador,
             ]);
     }
 
@@ -184,9 +202,13 @@ class InventarioController extends Controller
      */
     public function show($id)
     {
+        $contador = Contador::findOrFail(Utils::$PRODUCTOS_VER);
+        $contador->increment('contador',1);
+
         return view('vistas.inventario.show',
             [
                 'producto' => Producto::findOrFail($id),
+                'contador' => $contador,
             ]);
     }
 
@@ -229,8 +251,14 @@ class InventarioController extends Controller
      */
     public function listaBajas()
     {
-        return view('vistas.inventario.listaBajas',
-            ['bajas' => BajaProducto::paginate(5)]);
+
+        $contador = Contador::findOrFail(Utils::$BAJAS_INDEX);
+        $contador->increment('contador',1);
+
+        return view('vistas.inventario.listaBajas',[
+                'bajas' => BajaProducto::paginate(5),
+                'contador' => $contador,
+        ]);
     }
 
     /**
@@ -246,8 +274,13 @@ class InventarioController extends Controller
      */
     public function nuevaBaja($id)
     {
+
+        $contador = Contador::findOrFail(Utils::$PRODUCTOS_BAJA);
+        $contador->increment('contador',1);
+
         return view('vistas.inventario.nuevaBaja', [
             'producto' => Producto::findOrFail($id),
+            'contador' => $contador,
         ]);
     }
 
@@ -328,10 +361,14 @@ class InventarioController extends Controller
      */
     public function listaIngresos()
     {
+        $contador = Contador::findOrFail(Utils::$INGRESOS_INDEX);
+        $contador->increment('contador',1);
+
         return view('vistas.inventario.listaIngresos',
             [
                 'ingresos' => IngresoProducto::
                 orderBy('id', 'desc')->paginate(5),
+                'contador' => $contador,
             ]);
     }
 
@@ -348,9 +385,13 @@ class InventarioController extends Controller
      */
     public function nuevoIngreso()
     {
+        $contador = Contador::findOrFail(Utils::$INGRESOS_REGISTRAR);
+        $contador->increment('contador',1);
+
         return view('vistas.inventario.nuevoIngreso', [
             'productos' => Producto::all(),
             'proveedores' => Proveedor::all(),
+            'contador' => $contador,
         ]);
     }
 
@@ -445,8 +486,12 @@ class InventarioController extends Controller
      */
     public function verIngreso($id)
     {
+        $contador = Contador::findOrFail(Utils::$INGRESOS_VER);
+        $contador->increment('contador',1);
+
         return view('vistas.inventario.verIngreso', [
             'ingreso' => IngresoProducto::findOrFail($id),
+            'contador' => $contador,
         ]);
     }
 
