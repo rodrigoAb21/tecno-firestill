@@ -76,22 +76,22 @@ Route::middleware('auth')->group(function () {
 
 
     // ------------------------------- INGRESO P ------------------------------------------
-    Route::get('inventario/listaIngresos', 'InventarioController@listaIngresos');
-    Route::get('inventario/nuevoIngreso', 'InventarioController@nuevoIngreso');
-    Route::post('inventario/guardarIngreso', 'InventarioController@guardarIngreso');
-    Route::get('inventario/verIngreso/{id}', 'InventarioController@verIngreso');
-    Route::delete('inventario/eliminarIngreso/{id}', 'InventarioController@eliminarIngreso');
+    Route::get('inventario/listaIngresos', 'IngresoProductoController@listaIngresos');
+    Route::get('inventario/nuevoIngreso', 'IngresoProductoController@nuevoIngreso');
+    Route::post('inventario/guardarIngreso', 'IngresoProductoController@guardarIngreso');
+    Route::get('inventario/verIngreso/{id}', 'IngresoProductoController@verIngreso');
+    Route::delete('inventario/eliminarIngreso/{id}', 'IngresoProductoController@eliminarIngreso');
 
 
     // --------------------------------- BAJAS P -------------------------------------------
-    Route::get('inventario/listaBajas', 'InventarioController@listaBajas');
-    Route::get('inventario/darBaja/{id}', 'InventarioController@nuevaBaja');
-    Route::post('inventario/darBaja', 'InventarioController@darBaja');
-    Route::delete('inventario/anularBaja/{id}', 'InventarioController@anularBaja');
-
-    Route::get('inventario/reporte', 'InventarioController@reporte');
-    Route::resource('inventario', 'InventarioController');
-
+    Route::get('inventario/listaBajas', 'BajaProductoController@listaBajas');
+    Route::get('inventario/darBaja/{id}', 'BajaProductoController@nuevaBaja');
+    Route::post('inventario/darBaja', 'BajaProductoController@darBaja');
+    Route::delete('inventario/anularBaja/{id}', 'BajaProductoController@anularBaja');
+/******************/
+    Route::get('inventario/reporte', 'ProductoController@reporte');
+    Route::resource('inventario', 'ProductoController');
+/*****************/
 
     // ------------------------------------- VENTAS ------------------------------------
     Route::get('ventas/ventas', 'VentaController@ventas');
