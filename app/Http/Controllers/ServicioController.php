@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Modelos\Cliente;
+use App\Modelos\Contador;
 use App\Modelos\DetalleNotaVenta;
 use App\Modelos\NotaVenta;
 use App\Modelos\Producto;
 use App\Modelos\Servicio;
 
 use App\Modelos\Trabajador;
+use App\Utils\Utils;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,16 +19,26 @@ class ServicioController extends Controller
 {
     public function servicios()
     {
+        $contador = Contador::findOrFail(Utils::$SERVICIOS_INDEX);
+        $contador->increment('contador',1);
+
+
         return view('vistas.servicios.servicios', [
-            'ventas' => NotaVenta::where('tipo', '=', false)->orderByDesc('id')->paginate(5)
+            'ventas' => NotaVenta::where('tipo', '=', false)->orderByDesc('id')->paginate(5),
+            'contador' => $contador,
         ]);
     }
     public function nuevoServicio()
     {
+        $contador = Contador::findOrFail(Utils::$SERVICIOS_REGISTRAR);
+        $contador->increment('contador',1);
+
+
         return view('vistas.servicios.nuevoServicio',[
             'clientes' => Cliente::all(),
             'trabajadores' => Trabajador::all(),
             'productos' => Producto::where('cantidad', '>', 0)->get(),
+            'contador' => $contador,
         ]);
     }
     public function guardarServicio(Request $request)
@@ -118,8 +130,13 @@ class ServicioController extends Controller
     }
     public function verServicio($id)
     {
+        $contador = Contador::findOrFail(Utils::$SERVICIOS_VER);
+        $contador->increment('contador',1);
+
+
         return view('vistas.servicios.verServicio', [
             'venta' => NotaVenta::findOrFail($id),
+            'contador' => $contador,
         ]);
     }
     public function eliminarServicio($id)

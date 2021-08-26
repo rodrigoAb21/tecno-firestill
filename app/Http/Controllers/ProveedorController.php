@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Modelos\Contador;
 use App\Modelos\Proveedor;
+use App\Utils\Utils;
 use Illuminate\Http\Request;
 
 class ProveedorController extends Controller
@@ -31,9 +33,14 @@ class ProveedorController extends Controller
      *************************************************************************
      */
     public function index(){
+
+        $contador = Contador::findOrFail(Utils::$PROVEEDORES_INDEX);
+        $contador->increment('contador',1);
+
         return view('vistas.proveedores.index',
             [
                 'proveedores' => Proveedor::paginate(5),
+                'contador' => $contador,
             ]);
     }
 
@@ -51,9 +58,14 @@ class ProveedorController extends Controller
      *************************************************************************
      */
     public function create(){
+        $contador = Contador::findOrFail(Utils::$PROVEEDORES_REGISTRAR);
+        $contador->increment('contador',1);
+
+
         return view('vistas.proveedores.create', [
             'monedas' => Proveedor::$MONEDAS,
             'sucursales' => Proveedor::$SUCURSALES,
+            'contador' => $contador,
         ]);
     }
 
@@ -123,10 +135,15 @@ class ProveedorController extends Controller
      */
     public function edit($id)
     {
+        $contador = Contador::findOrFail(Utils::$PROVEEDORES_EDITAR);
+        $contador->increment('contador',1);
+
+
         return view('vistas.proveedores.edit', [
             'monedas' => Proveedor::$MONEDAS,
             'sucursales' => Proveedor::$SUCURSALES,
             'proveedor' => Proveedor::findOrFail($id),
+            'contador' => $contador
         ]);
     }
 
@@ -145,9 +162,14 @@ class ProveedorController extends Controller
      */
     public function show($id)
     {
+        $contador = Contador::findOrFail(Utils::$PROVEEDORES_VER);
+        $contador->increment('contador',1);
+
+
         return view('vistas.proveedores.show',
             [
                 'proveedor' => Proveedor::findOrFail($id),
+                'contador' => $contador,
             ]);
     }
 

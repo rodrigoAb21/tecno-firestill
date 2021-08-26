@@ -19,10 +19,8 @@
                         <li class="breadcrumb-item"><a href="{{url('imonitoreo/listaContratos')}}">Contratos</a></li>
                         <li class="breadcrumb-item"><a href="{{url('imonitoreo/verContrato/'.$sucursal->contrato_id)}}">{{$sucursal->contrato_id}}</a></li>
                         <li class="breadcrumb-item active">Sucursales</li>
-
                         <li class="breadcrumb-item"><a href="{{url('imonitoreo/verSucursal/'.$sucursal->id)}}">{{$sucursal->id}}</a></li>
                         <li class="breadcrumb-item active">Equipos</li>
-
                         <li class="breadcrumb-item active">{{$equipo->id}}</li>
                         <li class="breadcrumb-item active">Inspecciones</li>
                     </ol>
@@ -36,6 +34,12 @@
                 <div class="card-body">
                     <h3 class="pb-2">
                         FICHAS DE INSPECCION COD EQUIPO: {{$equipo->id}}
+                        <div class="float-right">
+                            <a class="btn btn-success" href="{{url('imonitoreo/nuevaFicha/'.$equipo->id)}}">
+                                <i class="fa fa-plus"></i>  Nueva
+                            </a>
+
+                        </div>
                     </h3>
                     <div class="row">
                         <div class="table-responsive">
@@ -54,7 +58,7 @@
                                     <tr class="text-center">
                                         <td>{{$ficha->id}}</td>
                                         <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $ficha->fecha)->format('d-m-Y')}}</td>
-                                        <td>{{$ficha->empleado->nombre}} {{$ficha->empleado->apellido}}</td>
+                                        <td>{{$ficha->trabajador->nombre}} {{$ficha->trabajador->apellido}}</td>
                                         <td>{{$ficha->resultado}}</td>
                                         <td>
                                             <a href="{{url('imonitoreo/verFicha/'.$ficha->id)}}">
@@ -62,6 +66,9 @@
                                                     <i class="fa fa-eye"></i>
                                                 </button>
                                             </a>
+                                            <button type="button" class="btn btn-danger" title="Eliminar" onclick="modalEliminar('{{$ficha->id}}', '{{url('imonitoreo/eliminarFicha/'.$ficha -> id)}}')">
+                                                <i class="fa fa-times"></i>
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -74,5 +81,18 @@
                 </div>
         </div>
     </div>
+        @include('vistas.modal')
+        @push('scripts')
+            <script>
+                function modalEliminar(nombre, url) {
+                    $('#modalEliminarForm').attr("action", url);
+                    $('#metodo').val("delete");
+                    $('#modalEliminarTitulo').html("Eliminar Ficha Tecnica");
+                    $('#modalEliminarEnunciado').html("Realmente desea eliminar la ficha: " + nombre + "?");
+                    $('#modalEliminar').modal('show');
+                }
+            </script>
+
+    @endpush()
 @endsection
 

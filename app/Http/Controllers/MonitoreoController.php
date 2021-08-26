@@ -12,7 +12,9 @@ use App\Modelos\MarcaClasificacion;
 use App\Modelos\Sucursal;
 use App\Modelos\TipoClasificacion;
 use App\Utils\Utils;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use LaravelQRCode\Facades\QRCode;
 
@@ -353,14 +355,70 @@ class MonitoreoController extends Controller
             'contador' => $contador,
         ]);
     }
+
     public function verFicha($id){
 
         $contador = Contador::findOrFail(Utils::$FICHAS_VER);
         $contador->increment('contador',1);
 
+        $ficha = FichaTecnica::findOrFail($id);
+        $equipo = Equipo::findOrFail($ficha->equipo_id);
         return view('vistas.imonitoreo.verFicha', [
-            'ficha' => FichaTecnica::findOrFail($id),
+            'ficha' => $ficha,
             'contador' => $contador,
+            'equipo' => $equipo,
+            'sucursal' => Sucursal::findOrFail($equipo->sucursal_id)
         ]);
+    }
+
+    public function nuevaFicha($id){
+        $equipo = Equipo::findOrFail($id);
+
+        $contador = Contador::findOrFail(Utils::$FICHAS_REGISTRAR);
+        $contador->increment('contador',1);
+
+
+        return view('vistas.imonitoreo.nuevaFicha', [
+            'contador' => $contador,
+            'equipo' => $equipo,
+            'sucursal' => Sucursal::findOrFail($equipo->sucursal_id),
+        ]);
+    }
+
+    public function guardarFicha(Request $request, $id){
+
+        $fichaTecnica = new FichaTecnica();
+        $fichaTecnica->equipo_id=$id;
+        $fichaTecnica->fecha=  $request->fecha;
+        $fichaTecnica->eCanioPesca= $request->eCanioPesca;
+        $fichaTecnica->eZuncho= $request->eZuncho;
+        $fichaTecnica->eChasis= $request->eChasis;
+        $fichaTecnica->eRueda= $request->eRueda;
+        $fichaTecnica->eRosca= $request->eRosca;
+        $fichaTecnica->eManguera= $request->eManguera;
+        $fichaTecnica->eValvula= $request->eValvula;
+        $fichaTecnica->eTobera= $request->eTobera;
+        $fichaTecnica->eRobinete= $request->eRobinete;
+        $fichaTecnica->ePalanca= $request->ePalanca;
+        $fichaTecnica->eManometro= $request->eManometro;
+        $fichaTecnica->eVastago= $request->eVastago;
+        $fichaTecnica->eDifusor= $request->eDifusor;
+        $fichaTecnica->eDisco= $request->eDisco;
+        $fichaTecnica->carga= $request->carga;
+        $fichaTecnica->observacion= $request->observacion;
+        $fichaTecnica->resultado= $request->resultado;
+        $fichaTecnica->trabajador_id= Auth::user()->id;
+        $fichaTecnica->save();
+
+        return redirect('imonitoreo/listarFichas/'.$id);
+    }
+
+    public function eliminarFicha($id)
+    {
+        $ficha = FichaTecnica::findOrFail($id);
+        $equipo_id = $ficha->equipo_id;
+        $ficha->delete();
+
+        return redirect('imonitoreo/listarFichas/'.$equipo_id);
     }
 }
