@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Modelos\Contador;
 use App\Modelos\TipoClasificacion;
+use App\Utils\Utils;
 use Illuminate\Http\Request;
 
 class TipoClasificacionController extends Controller
@@ -31,9 +33,14 @@ class TipoClasificacionController extends Controller
      *************************************************************************
      */
     public function index(){
+        $contador = Contador::findOrFail(Utils::$TIPOS_INDEX);
+        $contador->increment('contador',1);
+
+
         return view('vistas.tipos.index',
             [
                 'tipos' => TipoClasificacion::paginate(5),
+                'contador' => $contador,
             ]);
     }
 
@@ -51,7 +58,13 @@ class TipoClasificacionController extends Controller
      *************************************************************************
      */
     public function create(){
-        return view('vistas.tipos.create');
+        $contador = Contador::findOrFail(Utils::$TIPOS_REGISTRAR);
+        $contador->increment('contador',1);
+
+
+        return view('vistas.tipos.create', [
+            'contador' => $contador,
+        ]);
     }
 
 
@@ -96,9 +109,14 @@ class TipoClasificacionController extends Controller
      */
     public function edit($id)
     {
+        $contador = Contador::findOrFail(Utils::$TIPOS_EDITAR);
+        $contador->increment('contador',1);
+
+
         return view('vistas.tipos.edit',
             [
                 'tipo' => TipoClasificacion::findOrFail($id),
+                'contador' => $contador,
             ]);
     }
 

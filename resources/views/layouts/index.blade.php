@@ -360,7 +360,7 @@
 
         var hour = (new Date).getHours();
 
-        if (hour >= 16) {
+        if (hour >= 18) {
             $('#app-default-stylesheet').prop('disabled', true);
             $('#bs-default-stylesheet').prop('disabled', true);
 
