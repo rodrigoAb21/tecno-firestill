@@ -80,7 +80,7 @@
                         {{csrf_field()}}
                         <div class="app-search-box dropdown">
                             <div class="input-group">
-                                <input type="search" class="form-control" placeholder="Search..." id="top-search" name="textoBusqueda">
+                                <input type="search" class="form-control" placeholder="Search..." id="top-search" name="textoBusqueda" required>
                                 <div class="input-group-append">
                                     <button class="btn" type="submit">
                                         <i class="fe-search"></i>

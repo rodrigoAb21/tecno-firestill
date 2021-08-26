@@ -173,9 +173,9 @@ class BusquedaController extends Controller
             ->orWhere('nro_serie', $palabra)
             ->orWhere('descripcion', 'like','%'.$palabra.'%')
             ->orWhere('ubicacion','like','%'.$palabra.'%')
-            ->orWhere('sucursal_id',$palabra)
-            ->orWhere('tipo_clasificacion_id',$palabra)
-            ->orWhere('marca_clasificacion_id',$palabra)
+            ->orWhere('sucursal_id',(int)$palabra)
+            ->orWhere('tipo_clasificacion_id',(int)$palabra)
+            ->orWhere('marca_clasificacion_id',(int)$palabra)
             ->get();
         $resultadoModelo=[];
         foreach ($resultados as $resultado){
@@ -240,12 +240,12 @@ class BusquedaController extends Controller
     {
         $resultados = DB::table('producto')->
         where('id', (int)$palabra)
-            ->orWhere('nombre', 'like', '%' . $palabra . '%')
-            ->orWhere('foto', 'like', '%' . $palabra . '%')
-            ->orWhere('descripcion', 'like', '%' . $palabra . '%')
-            ->orWhere('precio', $palabra)
-            ->orWhere('cantidad', $palabra)
-            ->orWhere('categoria_id', (int)$palabra)
+           // ->orWhere('nombre', 'like', '%' . $palabra . '%')
+            //->orWhere('foto', 'like', '%' . $palabra . '%')
+            //->orWhere('descripcion', 'like', '%' . $palabra . '%')
+            //->orWhere('precio', (double)$palabra)
+            //->orWhere('cantidad', $palabra)
+            //->orWhere('categoria_id', (int)$palabra)
             ->get();
         $resultadoModelo=[];
         foreach ($resultados as $resultado){
