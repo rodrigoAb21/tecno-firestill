@@ -383,7 +383,7 @@
 
         var hour = (new Date).getHours();
 
-        if (hour >= 18) {
+        if (hour >= 18 || hour <= 6) {
             $('#app-default-stylesheet').prop('disabled', true);
             $('#bs-default-stylesheet').prop('disabled', true);
 
