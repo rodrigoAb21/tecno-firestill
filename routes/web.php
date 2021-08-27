@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware('administrador')->group(function () {
         Route::resource('trabajadores', 'TrabajadorController');
         Route::resource('proveedores', 'ProveedorController');
-        Route::resource('clientes', 'ClienteController');
+
         Route::resource('categorias', 'CategoriaController');
         Route::resource('tipos', 'TipoClasificacionController');
         Route::resource('marcas', 'MarcaClasificacionController');
@@ -94,6 +94,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::middleware('venta')->group(function () {
+        Route::resource('clientes', 'ClienteController');
 
         // ------------------------------- INGRESO P ------------------------------------------
         Route::get('inventario/listaIngresos', 'IngresoProductoController@listaIngresos');

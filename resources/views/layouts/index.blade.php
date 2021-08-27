@@ -331,6 +331,14 @@
                                     @if (!\Auth::guest())
                                         @if(Auth::user()->tipo == 'Venta')
 
+                                                <li class="{{ Request::is('clientes*') ? 'nav-item active' : 'nav-item' }}">
+                                                    <a href="{{url('clientes')}}" >
+                                                        <i class="fa fa-user-tie"></i>
+                                                        <span class="hide-menu"> Clientes</span>
+                                                    </a>
+                                                </li>
+
+
                                                 <li class="{{ Request::is('inventario*') ? 'nav-item active' : 'nav-item' }}">
                                                     <a href="#sidebarInventario" data-toggle="collapse">
                                                         <i class="fa fa-boxes"></i>
