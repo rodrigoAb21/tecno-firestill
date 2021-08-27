@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Modelos\Contador;
+use App\Modelos\DetalleIngresoProducto;
 use App\Modelos\IngresoProducto;
 use App\Modelos\Producto;
 use App\Modelos\Proveedor;

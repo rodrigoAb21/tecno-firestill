@@ -119,6 +119,10 @@ Route::middleware('auth')->group(function () {
     //-------------------------------------- BUSQUEDA ---------------------------------------
     Route::post('busqueda','BusquedaController@buscar');
 
+    // ---------------------------------- REPORTES -------------------------------------------
+    Route::get('reportes/reporteSitio', 'ReporteController@reporteSitio');
+    Route::get('reportes/reporteVenta', 'ReporteController@reporteVenta');
+
 
 
     Route::get( '(.*)', function(){

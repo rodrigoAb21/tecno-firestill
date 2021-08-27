@@ -264,6 +264,7 @@
                         </div>
                     </li>
 
+
                     <li class="{{ Request::is('imonitoreo*') ? 'nav-item active' : 'nav-item' }}">
                         <a href="{{url('imonitoreo/listaContratos')}}" >
                             <i class="fa fa-fire-extinguisher"></i>
@@ -292,7 +293,29 @@
                         </a>
                     </li>
 
+                        <li class="{{ Request::is('reportes*') ? 'nav-item active' : 'nav-item' }}">
+                            <a href="#sidebarReporte" data-toggle="collapse">
+                                <i class="fas fa-chart-pie"></i>
+                                <span class="hide-menu"> Reportes</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarReporte">
+                                <ul class="nav-second-level">
+                                    <li class="{{ Request::is('reportes/reporteSitio*') ? 'nav-item active' : 'nav-item' }}">
+                                        <a href="{{url('reportes/reporteSitio')}}" >
 
+                                            <span>  Reporte del Sitio</span>
+                                        </a>
+                                    </li>
+                                    <li class="{{ Request::is('reportes/reporteVenta*') ? 'nav-item active' : 'nav-item' }}">
+                                        <a href="{{url('reportes/reporteVenta')}}" >
+
+                                            <span>  Reporte de Ventas</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
 
                 </ul>
 
