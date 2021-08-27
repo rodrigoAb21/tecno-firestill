@@ -32,7 +32,6 @@ class BusquedaController extends Controller
     {
         $palabra= $request['textoBusqueda'];
 
-
         $this->buscarBajaProducto($palabra);
         $this->buscarCategoria($palabra);
         $this->buscarCliente($palabra);
@@ -53,7 +52,8 @@ class BusquedaController extends Controller
         return view('vistas.busqueda.index',
             [
                 'datos' => $this->datos,
-                'vacio' => $this->vacio
+                'vacio' => $this->vacio,
+                'textoBusqueda' => $palabra
             ]);
 
     }

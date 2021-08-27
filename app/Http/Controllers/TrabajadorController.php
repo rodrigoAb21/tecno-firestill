@@ -9,28 +9,6 @@ use Illuminate\Http\Request;
 
 class TrabajadorController extends Controller
 {
-    /**
-     *************************************************************************
-     * Clase.........: TrabajadorController
-     * Tipo..........: Controlador (MVC)
-     * Descripción...: Clase que contiene funciones y metodos para gestionar los
-     * trabajadores.
-     * Fecha.........: 07-FEB-2021
-     * Autor.........: Rodrigo Abasto Berbetty
-     *************************************************************************
-     */
-
-    /**
-     *************************************************************************
-     * Nombre........: index
-     * Tipo..........: Funcion
-     * Entrada.......: Ninguna
-     * Salida........: Vista y una lista paginada de trabajadores
-     * Descripcion...: Una lista de trabajadores que será mostrado en una vista
-     * Fecha.........: 07-FEB-2021
-     * Autor.........: Rodrigo Abasto Berbetty
-     *************************************************************************
-     */
     public function index(){
 
         $contador = Contador::findOrFail(Utils::$TRABAJADORES_INDEX);

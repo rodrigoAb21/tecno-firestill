@@ -12,8 +12,9 @@
         </div>
     </div>
     @if($vacio==true)
-        <h3>No se encontraron coincidencias con el texto ingresado</h3>
+        <h3>No se encontraron coincidencias con: {{$textoBusqueda}}</h3>
     @else
+        <h3>Resultados de busqueda: {{$textoBusqueda}}</h3>
 @if(count($datos['trabajador'][0]))
     <div class="row">
         <div class="col-12">
