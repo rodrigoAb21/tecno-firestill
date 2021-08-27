@@ -40,7 +40,7 @@ class ClienteController extends Controller
 
         return view('vistas.clientes.index',
             [
-                'clientes' => Cliente::paginate(5),
+                'clientes' => Cliente::paginate(10),
                 'contador' => $contador,
             ]);
     }

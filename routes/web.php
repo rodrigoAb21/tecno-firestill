@@ -27,14 +27,21 @@ Route::get('/home', function () {
 Route::middleware('auth')->group(function () {
     Route::middleware('administrador')->group(function () {
         Route::resource('trabajadores', 'TrabajadorController');
+        Route::resource('proveedores', 'ProveedorController');
+        Route::resource('clientes', 'ClienteController');
+        Route::resource('categorias', 'CategoriaController');
+        Route::resource('tipos', 'TipoClasificacionController');
+        Route::resource('marcas', 'MarcaClasificacionController');
+        Route::resource('notificaciones', 'NotificacionController');
+
+        // ---------------------------------- REPORTES -------------------------------------------
+        Route::get('reportes/reporteSitio', 'ReporteController@reporteSitio');
+        Route::get('reportes/reporteVenta', 'ReporteController@reporteVenta');
+
     });
 
-    Route::resource('proveedores', 'ProveedorController');
-    Route::resource('clientes', 'ClienteController');
-    Route::resource('categorias', 'CategoriaController');
-    Route::resource('tipos', 'TipoClasificacionController');
-    Route::resource('marcas', 'MarcaClasificacionController');
-    Route::resource('notificaciones', 'NotificacionController');
+
+
 
 
     // ------------------------------ CONTRATO -------------------------------------------
@@ -81,48 +88,48 @@ Route::middleware('auth')->group(function () {
     Route::delete('alertas/{id}', 'AlertaController@destroy');
 
 
-    // ------------------------------- INGRESO P ------------------------------------------
-    Route::get('inventario/listaIngresos', 'IngresoProductoController@listaIngresos');
-    Route::get('inventario/nuevoIngreso', 'IngresoProductoController@nuevoIngreso');
-    Route::post('inventario/guardarIngreso', 'IngresoProductoController@guardarIngreso');
-    Route::get('inventario/verIngreso/{id}', 'IngresoProductoController@verIngreso');
-    Route::delete('inventario/eliminarIngreso/{id}', 'IngresoProductoController@eliminarIngreso');
-
-
-    // --------------------------------- BAJAS P -------------------------------------------
-    Route::get('inventario/listaBajas', 'BajaProductoController@listaBajas');
-    Route::get('inventario/darBaja/{id}', 'BajaProductoController@nuevaBaja');
-    Route::post('inventario/darBaja', 'BajaProductoController@darBaja');
-    Route::delete('inventario/anularBaja/{id}', 'BajaProductoController@anularBaja');
-/******************/
-    Route::get('inventario/reporte', 'ProductoController@reporte');
-    Route::resource('inventario', 'ProductoController');
-/*****************/
-
-    // ------------------------------------- VENTAS ------------------------------------
-    Route::get('ventas/ventas', 'VentaController@ventas');
-    Route::get('ventas/nuevaVenta', 'VentaController@nuevaVenta');
-    Route::post('ventas/guardarVenta', 'VentaController@guardarVenta');
-    Route::get('ventas/verVenta/{id}', 'VentaController@verVenta');
-    Route::delete('ventas/eliminarVenta/{id}', 'VentaController@eliminarVenta');
-
-
-    // ------------------------------------- SERVICIOS ------------------------------------
-    Route::get('ventas/servicios', 'ServicioController@servicios');
-    Route::get('ventas/nuevoServicio', 'ServicioController@nuevoServicio');
-    Route::post('ventas/guardarServicio', 'ServicioController@guardarServicio');
-    Route::get('ventas/verServicio/{id}', 'ServicioController@verServicio');
-    Route::delete('ventas/eliminarServicio/{id}', 'ServicioController@eliminarServicio');
-
-
     
     //-------------------------------------- BUSQUEDA ---------------------------------------
     Route::post('busqueda','BusquedaController@buscar');
 
-    // ---------------------------------- REPORTES -------------------------------------------
-    Route::get('reportes/reporteSitio', 'ReporteController@reporteSitio');
-    Route::get('reportes/reporteVenta', 'ReporteController@reporteVenta');
 
+    Route::middleware('venta')->group(function () {
+
+        // ------------------------------- INGRESO P ------------------------------------------
+        Route::get('inventario/listaIngresos', 'IngresoProductoController@listaIngresos');
+        Route::get('inventario/nuevoIngreso', 'IngresoProductoController@nuevoIngreso');
+        Route::post('inventario/guardarIngreso', 'IngresoProductoController@guardarIngreso');
+        Route::get('inventario/verIngreso/{id}', 'IngresoProductoController@verIngreso');
+        Route::delete('inventario/eliminarIngreso/{id}', 'IngresoProductoController@eliminarIngreso');
+
+
+        // --------------------------------- BAJAS P -------------------------------------------
+        Route::get('inventario/listaBajas', 'BajaProductoController@listaBajas');
+        Route::get('inventario/darBaja/{id}', 'BajaProductoController@nuevaBaja');
+        Route::post('inventario/darBaja', 'BajaProductoController@darBaja');
+        Route::delete('inventario/anularBaja/{id}', 'BajaProductoController@anularBaja');
+        /******************/
+        Route::get('inventario/reporte', 'ProductoController@reporte');
+        Route::resource('inventario', 'ProductoController');
+        /*****************/
+
+        // ------------------------------------- VENTAS ------------------------------------
+        Route::get('ventas/ventas', 'VentaController@ventas');
+        Route::get('ventas/nuevaVenta', 'VentaController@nuevaVenta');
+        Route::post('ventas/guardarVenta', 'VentaController@guardarVenta');
+        Route::get('ventas/verVenta/{id}', 'VentaController@verVenta');
+        Route::delete('ventas/eliminarVenta/{id}', 'VentaController@eliminarVenta');
+
+
+        // ------------------------------------- SERVICIOS ------------------------------------
+        Route::get('ventas/servicios', 'ServicioController@servicios');
+        Route::get('ventas/nuevoServicio', 'ServicioController@nuevoServicio');
+        Route::post('ventas/guardarServicio', 'ServicioController@guardarServicio');
+        Route::get('ventas/verServicio/{id}', 'ServicioController@verServicio');
+        Route::delete('ventas/eliminarServicio/{id}', 'ServicioController@eliminarServicio');
+
+
+    });
 
 
     Route::get( '(.*)', function(){

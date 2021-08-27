@@ -31,7 +31,7 @@ class MonitoreoController extends Controller
         $contador->increment('contador',1);
 
         return view('vistas.imonitoreo.listaContratos', [
-            'contratos' => Contrato::paginate(5),
+            'contratos' => Contrato::paginate(10),
             'contador' => $contador,
         ]);
     }

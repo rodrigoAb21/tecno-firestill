@@ -22,7 +22,7 @@ class VentaController extends Controller
 
 
         return view('vistas.ventas.ventas', [
-            'ventas' => NotaVenta::where('tipo', '=', true)->orderByDesc('id')->paginate(5),
+            'ventas' => NotaVenta::where('tipo', '=', true)->orderByDesc('id')->paginate(10),
             'contador' => $contador,
         ]);
     }

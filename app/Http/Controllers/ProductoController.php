@@ -21,7 +21,7 @@ class ProductoController extends Controller
 
         return view('vistas.inventario.index',
             [
-                'productos' => Producto::paginate(5),
+                'productos' => Producto::paginate(10),
                 'contador' => $contador,
             ]);
     }

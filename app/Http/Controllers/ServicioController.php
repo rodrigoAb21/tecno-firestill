@@ -24,7 +24,7 @@ class ServicioController extends Controller
 
 
         return view('vistas.servicios.servicios', [
-            'ventas' => NotaVenta::where('tipo', '=', false)->orderByDesc('id')->paginate(5),
+            'ventas' => NotaVenta::where('tipo', '=', false)->orderByDesc('id')->paginate(10),
             'contador' => $contador,
         ]);
     }

@@ -49,7 +49,7 @@ class InventarioController extends Controller
 
         return view('vistas.inventario.index',
             [
-                'productos' => Producto::paginate(5),
+                'productos' => Producto::paginate(10),
                 'contador' => $contador,
             ]);
     }
@@ -256,7 +256,7 @@ class InventarioController extends Controller
         $contador->increment('contador',1);
 
         return view('vistas.inventario.listaBajas',[
-                'bajas' => BajaProducto::paginate(5),
+                'bajas' => BajaProducto::paginate(10),
                 'contador' => $contador,
         ]);
     }
@@ -367,7 +367,7 @@ class InventarioController extends Controller
         return view('vistas.inventario.listaIngresos',
             [
                 'ingresos' => IngresoProducto::
-                orderBy('id', 'desc')->paginate(5),
+                orderBy('id', 'desc')->paginate(10),
                 'contador' => $contador,
             ]);
     }
