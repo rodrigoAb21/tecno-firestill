@@ -41,4 +41,8 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function config(){
+        return $this->hasOne('App\Modelos\Config', 'trabajador_id');
+    }
 }
