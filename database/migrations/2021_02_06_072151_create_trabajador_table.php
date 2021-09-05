@@ -29,7 +29,6 @@ class CreateTrabajadorTable extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->string('carnet');
-            $table->integer('edad');
             $table->string('telefono')->nullable();
             $table->string('direccion')->nullable();
             $table->string('tipo');

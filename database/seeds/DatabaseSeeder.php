@@ -23,7 +23,6 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Rodrigo',
             'apellido' => 'Abasto',
             'carnet' => 'carnet',
-            'edad' => 28,
             'telefono' => '3532021',
             'direccion' => 'direccion',
             'tipo' => 'Administrador',
@@ -35,7 +34,6 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Juan',
             'apellido' => 'Perez',
             'carnet' => '7894562',
-            'edad' => 18,
             'telefono' =>  '79864512',
             'direccion' => 'Av. Paraguá # 82 ',
             'tipo' => 'Tecnico',
@@ -47,7 +45,6 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Jose',
             'apellido' => 'Menacho',
             'carnet' => '7456458',
-            'edad' => 14,
             'telefono' =>  '75698124',
             'direccion' => 'Av. Uruguay # 11',
             'tipo' => 'Venta',
@@ -60,27 +57,20 @@ class DatabaseSeeder extends Seeder
          ************************************************************/
 
         DB::table('config')->insert([
-            'theme' => 'dark',
-            'sidebar' => 'light',
-            'topbar' => 'dark',
-            'font' => 'default',
-            'font_size' => 'default',
+            'tema' => 1,
+            'noche' => false,
             'trabajador_id' => 1
         ]);
+
         DB::table('config')->insert([
-            'theme' => 'dark',
-            'sidebar' => 'brand',
-            'topbar' => 'dark',
-            'font' => 'default',
-            'font_size' => '20',
+            'tema' => 2,
+            'noche' => false,
             'trabajador_id' => 2
         ]);
+
         DB::table('config')->insert([
-            'theme' => 'dark',
-            'sidebar' => 'gradient',
-            'topbar' => 'dark',
-            'font' => 'default',
-            'font_size' => '20',
+            'tema' => 3,
+            'noche' => false,
             'trabajador_id' => 3
         ]);
 

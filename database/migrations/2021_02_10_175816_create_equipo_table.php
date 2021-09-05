@@ -21,13 +21,6 @@ class CreateEquipoTable extends Migration
             $table->string('unidad_medida');
             $table->integer('ano_fabricacion');
             $table->float('capacidad');
-            $table->float('presion_min');
-            $table->float('presion_max');
-            $table->double('longitud_ideal')->nullable();
-            $table->double('latitud_ideal')->nullable();
-            $table->float('presion_actual')->nullable();
-            $table->double('longitud_actual')->nullable();
-            $table->double('latitud_actual')->nullable();
             $table->softDeletes();
 
 

@@ -15,11 +15,8 @@ class CreateConfigTable extends Migration
     {
         Schema::create('config', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('sidebar');
-            $table->string('topbar');
-            $table->string('theme');
-            $table->string('font');
-            $table->string('font_size');
+            $table->unsignedInteger('tema');
+            $table->boolean('noche');
             $table->unsignedInteger('trabajador_id');
             $table->foreign('trabajador_id')->references('id')->on('trabajador');
         });
