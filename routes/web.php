@@ -30,6 +30,9 @@ Route::get('/home', function () {
 })->middleware('auth');
 
 Route::middleware('auth')->group(function () {
+    Route::get('configView/tema/{tema}', 'ConfigController@cambiarTema');
+    Route::get('configView/modo/{modo}', 'ConfigController@cambiarModo');
+
     Route::middleware('administrador')->group(function () {
         Route::resource('trabajadores', 'TrabajadorController');
         Route::resource('proveedores', 'ProveedorController');
