@@ -50,7 +50,6 @@
                                 <th class="text-center">COD</th>
                                 <th class="text-center">NOMBRE</th>
                                 <th class="text-center">APELLIDOS</th>
-                                <th class="text-center">EDAD</th>
                                 <th class="text-center">TIPO</th>
                                 <th class="text-center">TELEFONO</th>
                                 <th class="text-center">OPC</th>
@@ -62,7 +61,6 @@
                                     <td >{{$empleado->id}}</td>
                                     <td >{{$empleado->nombre}}</td>
                                     <td >{{$empleado->apellido}}</td>
-                                    <td >{{$empleado->edad}}</td>
                                     <td >{{$empleado->tipo}}</td>
                                     <td >{{$empleado->telefono}}</td>
 

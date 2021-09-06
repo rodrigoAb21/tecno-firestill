@@ -72,17 +72,8 @@
                                             name="direccion">
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label>Edad</label>
-                                    <input  readonly
-                                           type="text"
-                                           class="form-control"
-                                           value="{{$trabajador->edad}}"
-                                           name="carnet">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Carnet</label>
                                     <input  readonly
@@ -92,7 +83,7 @@
                                            name="carnet">
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Telefono</label>
                                     <input readonly
@@ -102,8 +93,7 @@
                                            name="telefono">
                                 </div>
                             </div>
-
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>E-mail</label>
                                     <input readonly
