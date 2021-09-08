@@ -17,7 +17,7 @@ class CreateIngresoProductoTable extends Migration
             $table->increments('id');
             $table->date('fecha');
             $table->string('nro_factura')->nullable();
-            $table->string('foto_factura')->nullable();
+            $table->string('foto_factura')->nullable()->default('default.png');
             $table->float('total');
 
             $table->unsignedInteger('proveedor_id');

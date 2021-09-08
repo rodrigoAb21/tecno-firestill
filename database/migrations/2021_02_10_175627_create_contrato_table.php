@@ -17,7 +17,7 @@ class CreateContratoTable extends Migration
             $table->increments('id');
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
-            $table->string('documento');
+            $table->string('documento')->default('default.png');
             $table->string('estado')->default('Vigente');
             $table->boolean('edicion')->default(true);
             $table->unsignedInteger('periodo');

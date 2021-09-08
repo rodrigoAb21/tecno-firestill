@@ -32,21 +32,30 @@
             color: #000000;
             text-align: center;
         }
+        .container {
+            position: relative;
+            text-align: center;
+            color: black;
+        }
+
+        /* Centered text */
+        .centered {
+            position: absolute;
+            top: 4%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     </style>
 </head>
 <body>
-<div>
-    <div style="width: 20%; float: left; border-left: 2px solid #687578; padding-left: 5px" align="center">
-
-    </div>
-    <div style="text-align: center">
-        <h2 align="center">Inventario - {{date('d-m-Y H:i:s')}}</h2>
-    </div>
-    <div style="width: 20%; float: left; border-left: 2px solid #687578; padding-left: 5px" align="center">
-
+<div class="container">
+    <img src="{{public_path('img/ifsc.png')}}" style="width: 100%"/>
+    <div class="centered">
+        <h2>Inventario de Productos {{date('d/M/Y')}}</h2>
     </div>
     <div style="clear: both;" />
 </div>
+<br>
 <div>
     <div>
         <table class="minimalistBlack">
