@@ -42,6 +42,6 @@ class Contrato extends Model
     }
 
     public function sucursales(){
-        return $this->hasMany(Sucursal::class);
+        return $this->hasMany(Sucursal::class)->orderByDesc('id');
     }
 }

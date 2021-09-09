@@ -39,7 +39,7 @@ class TipoClasificacionController extends Controller
 
         return view('vistas.tipos.index',
             [
-                'tipos' => TipoClasificacion::paginate(10),
+                'tipos' => TipoClasificacion::orderBy('id', 'desc')->paginate(10),
                 'contador' => $contador,
             ]);
     }

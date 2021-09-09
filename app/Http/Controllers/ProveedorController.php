@@ -39,7 +39,7 @@ class ProveedorController extends Controller
 
         return view('vistas.proveedores.index',
             [
-                'proveedores' => Proveedor::paginate(10),
+                'proveedores' => Proveedor::orderBy('id', 'desc')->paginate(10),
                 'contador' => $contador,
             ]);
     }

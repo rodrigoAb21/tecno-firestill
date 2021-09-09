@@ -40,7 +40,7 @@ class ClienteController extends Controller
 
         return view('vistas.clientes.index',
             [
-                'clientes' => Cliente::paginate(10),
+                'clientes' => Cliente::orderBy('id', 'desc')->paginate(10),
                 'contador' => $contador,
             ]);
     }
