@@ -6,6 +6,7 @@ use App\Modelos\Contador;
 use App\Modelos\Trabajador;
 use App\Utils\Utils;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TrabajadorController extends Controller
 {
@@ -66,7 +67,6 @@ class TrabajadorController extends Controller
             'telefono' => 'nullable|digits_between:7,8',
             'direccion' => 'nullable|max:255',
             'email' => 'required|max:255|email|unique:trabajador',
-            'password' => 'nullable|string|max:255',
             'tipo' => 'required|max:255',
         ]);
 
@@ -77,9 +77,15 @@ class TrabajadorController extends Controller
         $trabajador->telefono = $request['telefono'];
         $trabajador->direccion = $request['direccion'];
         $trabajador->email = $request['email'];
-        $trabajador->password = bcrypt($request['password']);
+        $trabajador->password = bcrypt($request['carnet']);
         $trabajador->tipo = $request['tipo'];
         $trabajador->save();
+
+        DB::table('config')->insert([
+            'tema' => 2,
+            'noche' => false,
+            'trabajador_id' => $trabajador->id
+        ]);
 
         return redirect('trabajadores');
     }
