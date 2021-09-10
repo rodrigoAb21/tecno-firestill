@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
          *                       TRABAJADORES
          ************************************************************/
         DB::table('trabajador')->insert([
-            'nombre' => 'Rodrigo',
-            'apellido' => 'Abasto',
+            'nombre' => 'Nathaly',
+            'apellido' => 'Pozadas',
             'carnet' => 'carnet',
             'telefono' => '3532021',
             'direccion' => 'direccion',
@@ -50,20 +50,31 @@ class DatabaseSeeder extends Seeder
             'tipo' => 'Venta',
             'email' => 'josem@gmail.com',
             'password' => bcrypt('rodrigo'),
-        ])
+        ]);
 
-        ;/*************************************************************
+        DB::table('trabajador')->insert([
+            'nombre' => 'Rodrigo',
+            'apellido' => 'Abasto',
+            'carnet' => '7456458',
+            'telefono' =>  '75698124',
+            'direccion' => 'Av. Uruguay # 11',
+            'tipo' => 'Administrador',
+            'email' => 'rodrigo.abasto21@gmail.com',
+            'password' => bcrypt('rodrigo'),
+        ]);
+
+        /*************************************************************
          *                       config
          ************************************************************/
 
         DB::table('config')->insert([
-            'tema' => 1,
+            'tema' => 2,
             'noche' => false,
             'trabajador_id' => 1
         ]);
 
         DB::table('config')->insert([
-            'tema' => 2,
+            'tema' => 1,
             'noche' => false,
             'trabajador_id' => 2
         ]);
@@ -72,6 +83,12 @@ class DatabaseSeeder extends Seeder
             'tema' => 3,
             'noche' => false,
             'trabajador_id' => 3
+        ]);
+
+        DB::table('config')->insert([
+            'tema' => 2,
+            'noche' => false,
+            'trabajador_id' => 4
         ]);
 
 
