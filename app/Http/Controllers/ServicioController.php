@@ -36,7 +36,7 @@ class ServicioController extends Controller
 
         return view('vistas.servicios.nuevoServicio',[
             'clientes' => Cliente::all(),
-            'trabajadores' => Trabajador::all(),
+            'trabajadores' => Trabajador::where('tipo','!=', 'Tecnico')->get(),
             'productos' => Producto::where('cantidad', '>', 0)->get(),
             'contador' => $contador,
         ]);
